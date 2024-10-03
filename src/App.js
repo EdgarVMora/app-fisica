@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
-import Operaciones from './UI/operaciones'
+import Operaciones from './UI/Operaciones'
+
 
 
 function App() {  
