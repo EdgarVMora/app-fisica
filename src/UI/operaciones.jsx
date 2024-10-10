@@ -10,35 +10,33 @@ import suma from '../Entidades/suma'
 
 
 function Operaciones(){
-    const TraerSuma = () => {
-        const xUno = parseFloat(document.getElementById('obtener_x_uno').value)
-        const yUno = parseFloat(document.getElementById('obtener_y_uno').value)
-        const xDos = parseFloat(document.getElementById('obtener_x_dos').value)
-        const yDos = parseFloat(document.getElementById('obtener_y_dos').value)
-        let resultadoX = suma(xUno,xDos)
-        let resultadoY = suma(yUno, yDos)
-        document.getElementById('resultado').innerText = `Resultado: (${resultadoX},${resultadoY}) `
-    }
     let resultadoSuma = Suma(4, 9)
     let resultadoResta = Resta(3,6)
     let resultadoMultiplicacion = Multiplicar(5,2)
+    const[valor, setValor] = useState(0)
+    //setValor = 25
     const[miArreglo2D, actualizarArreglo2D] = useState(Producto_Cruz2D())
     const[miArreglo3D, actualizarArreglo3D] = useState(Producto_Cruz3D)
+
+    const incremetar = () =>{
+        setValor(valor + 1)
+    }
     return(
         <div>
-            <p>Ingresa los valores para X1 de tu primer vector</p>
-            <input id='obtener_x_uno' type='number'></input>
-            <p>Ingresa los valores para Y1 de tu primer vector</p>
-            <input id='obtener_y_uno' type='number'></input>
-            <p>Ingresa los valores para X2 de tu primer vector</p>
-            <input id='obtener_x_dos' type='number'></input>
-            <p>Ingresa los valores para Y2 de tu primer vector</p>
-            <input id='obtener_y_dos' type='number'></input>
-            <button onClick={TraerSuma}>SUMAR</button>
-            <p id='resultado'></p>
+            <h1>Arriba Newton papa!</h1>
+            <h2>pura **** relatividad</h2>
+            {/*<input value={valor}onChange={(evento)=> setValor(evento.target.value)}></input>
+            //input controlado
+            <span>El valor es:{valor}</span>*/}
+            
+            <p>Ejemplo de useState basico</p>
+            <p>contador: {valor}</p>
+            <button onClick={incremetar}>Incrementar</button>
 
-
-
+            <p>Manipulando el input</p>
+            <input value={valor} onChange={(evento)=> setValor(evento.target.value)}></input>
+            <span>el valor es: {valor}</span>
+      
             <p>El resultado de la suma es: {resultadoSuma}</p>
             <p>El resultado de la resta es: {resultadoResta}</p>
             <p>El resultado de la multiplicacion es: {resultadoMultiplicacion}</p>
