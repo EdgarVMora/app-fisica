@@ -10,7 +10,22 @@ import suma from '../Entidades/suma'
 
 
 function Operaciones(){
-    let resultadoSuma = Suma(4, 9)
+    const[xUno, actualizarXUno]=useState(0)
+    const[yUno, actualizarYUno]=useState(0)
+    const[xDos, actualizarXDos]=useState(0)
+    const[yDos, actualizarYDos]=useState(0)
+
+    const[resultadoXTres, actualizarXTres]=useState(0)
+    const[resultadoYTres, actualizarYTres]=useState(0)
+
+    //let resultadoSuma = Suma(xUno, yUno)
+
+    const sumaVector = () => {
+        actualizarXTres(Suma(xUno, xDos))
+        actualizarYTres(Suma(yUno, yDos))
+        //return resultadoSuma
+    }
+    
     let resultadoResta = Resta(3,6)
     let resultadoMultiplicacion = Multiplicar(5,2)
     const[valor, setValor] = useState(0)
@@ -25,19 +40,22 @@ function Operaciones(){
         <div>
             <h1>Arriba Newton papa!</h1>
             <h2>pura **** relatividad</h2>
-            {/*<input value={valor}onChange={(evento)=> setValor(evento.target.value)}></input>
-            //input controlado
-            <span>El valor es:{valor}</span>*/}
-            
-            <p>Ejemplo de useState basico</p>
-            <p>contador: {valor}</p>
-            <button onClick={incremetar}>Incrementar</button>
+            <p>Ingresa el valor para xUno</p>
+            <input value={xUno} type='number' onChange={(eventoSuma) => actualizarXUno(eventoSuma.target.value)}/>
+            <p>Ingresa el valor para yUno</p>
+            <input value={yUno} type='number' onChange={(eventoSuma) => actualizarYUno(eventoSuma.target.value)}/><br/>
+            <p>Aqui esta tu primer vector: ({xUno},{yUno})</p>
+            <p>Ingresa el valor de xDos</p>
+            <input value={xDos} type='number' onChange={(eventoSuma)=> actualizarXDos(eventoSuma.target.value)} />
+            <p>Ingresa el valor de yDos</p>
+            <input value={yDos} type='number' onChange={(eventoSuma)=> actualizarYDos(eventoSuma.target.value)} />
+            <p>Aqui esta tu segundo vector: ({xDos},{yDos})</p>
 
-            <p>Manipulando el input</p>
-            <input value={valor} onChange={(evento)=> setValor(evento.target.value)}></input>
-            <span>el valor es: {valor}</span>
-      
-            <p>El resultado de la suma es: {resultadoSuma}</p>
+            <button onClick={sumaVector}>Suma</button>
+            <p>Aqui esta la suma de tus vectores. V3: ({resultadoXTres},{resultadoYTres})</p>
+            <p>_______________________</p>
+            
+            
             <p>El resultado de la resta es: {resultadoResta}</p>
             <p>El resultado de la multiplicacion es: {resultadoMultiplicacion}</p>
             <p>El resultado del producto cruz de 2 dimensiones es: {miArreglo2D[0]}i + {miArreglo2D[1]}j + {miArreglo2D[2]}k
